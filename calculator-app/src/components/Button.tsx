@@ -1,17 +1,15 @@
 import React from 'react'
 
 interface buttonProps {
-    content:number|string
+    content:string,
+    handleClick: (value:string)=>void
 }
 
-export default function Button({content}:buttonProps){
+export default function Button({content,handleClick}:buttonProps){
 
-    function handleClick(){
-        console.log("YEA")
-    }
 
     return(
-        <div className='grid-item' onClick = {handleClick}>
+        <div className='grid-item' onClick={()=>handleClick(content)} >
             {content}
         </div>
     )
