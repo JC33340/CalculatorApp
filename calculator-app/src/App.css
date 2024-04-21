@@ -4,7 +4,7 @@
   flex-direction: column;
 }
 
-.displayDiv{
+.display-div{
   border: 2px solid black;
   height: 80px;
   font-size: 50px;
@@ -14,9 +14,15 @@
   overflow-y: hidden;
 }
 
-.numberpad{
-  display: grid;
+.input-pad{
+  display: flex;
+  flex-direction: row;
   width: 50%;
+}
+
+.number-pad{
+  display: grid;
+  width: 80%;
   grid-template-columns: 1fr 1fr 1fr;
   gap:10px;
   font-size: 50px;
@@ -27,4 +33,14 @@
 .grid-item{
   display: flex;
   justify-content: center;
+
+}
+
+.operator-pad{
+  width: 20%;
+  display: grid;
+  gap: 10px;
+  font-size: 50px;
+  font-weight: bold;
+  border:1px solid black
 }
