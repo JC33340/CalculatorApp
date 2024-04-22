@@ -27,13 +27,31 @@
   gap:10px;
   font-size: 50px;
   font-weight: bold;
-  border:1px solid black
+  border:1px solid black;
+  padding:10px;
 }
 
 .grid-item{
   display: flex;
   justify-content: center;
+  border:1px solid black;
+}
 
+.active-grid-item{
+  background-color: grey;
+  color: black;
+  display: flex;
+  justify-content: center;
+}
+
+.grid-item:hover{
+  background-color: grey;
+  color: white;
+}
+
+.operator-pad>.grid-item{
+  background-color: black;
+  color: white;
 }
 
 .operator-pad{
@@ -42,5 +60,13 @@
   gap: 10px;
   font-size: 50px;
   font-weight: bold;
-  border:1px solid black
+  border:1px solid black;
+  padding:10px;
+}
+
+.equals-div{
+  border: 1px solid black;
+  font-size: 50px;
+  font-weight: bold;
+  width: 50%;
 }

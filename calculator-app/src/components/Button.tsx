@@ -2,14 +2,15 @@ import React from 'react'
 
 interface buttonProps {
     content:string,
-    handleClick: (value:string)=>void
+    handleClick: (value:string)=>void,
+    className: string
 }
 
-export default function Button({content,handleClick}:buttonProps){
+export default function Button({content,handleClick,className}:buttonProps){
 
 
     return(
-        <div className='grid-item' onClick={()=>handleClick(content)} >
+        <div className={className} onClick={()=>handleClick(content)} >
             {content}
         </div>
     )

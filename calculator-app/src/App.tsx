@@ -1,16 +1,29 @@
 import React from 'react';
 import './App.css';
 import createDisplay from './functions/createDisplay';
+import useOperatorDisplay from './functions/useOperatorDisplay';
+
 
 function App() {
+  //display state
+  const [currentDisplay,setCurrentDisplay] = React.useState<string>("")
+
+  //equation state
+  const [equation,setEquation] = React.useState<string[]>([])
+  
+  //reset state e.g. when an operator is pressed
+  const [reset,setReset] = React.useState<boolean>(true)
+
+  // keep operators in state
+  const [currentOperator,setCurrentOperator] = React.useState<string>("")
 
   //display numberpad items
   const numpadItems:(string)[] = ["1","2","3","4","5","6","7","8","9","0","."]
-  let numberpad = createDisplay(numpadItems,handleEvent)
+  let numberpad:JSX.Element[] = createDisplay(numpadItems,handleEvent)
 
   //operators
   const operators:string[] = ["+","-","/","*"]
-  let operatorDisplay: JSX.Element[] = createDisplay(operators,handleEvent)
+  let operatorDisplay: JSX.Element[]|undefined = useOperatorDisplay(operators,handleEvent,currentOperator)
 
   // equals button
   const equals:string[] = ["="]
@@ -19,18 +32,6 @@ function App() {
   //clear button
   const clear:string[] = ["CC"]
   let clearDisplay:JSX.Element[] = createDisplay(clear,handleEvent)
-
-  //display state
-  const [currentDisplay,setCurrentDisplay] = React.useState<string>("")
-
-  //equation state
-  const [equation,setEquation] = React.useState<string[]>([])
-  
-  //reset state e.g. when an operator is pressed
-  const [reset,setReset] = React.useState<boolean>(false)
-
-  // keep operators in state
-  const [currentOperator,setCurrentOperator] = React.useState<string>("")
 
   //handling the clicking of buttons on UI and events in general
   function handleEvent(value:string): void{
@@ -65,7 +66,7 @@ function App() {
           })
         }
       }else{
-        setEquation([currentDisplay,value]);
+        setEquation([currentDisplay?currentDisplay:"0",value]);
         setReset(true);
       }
       setCurrentOperator(value)
@@ -154,7 +155,10 @@ function App() {
           {operatorDisplay}
         </div>
       </div>
-      {equalsDisplay}
+      <div className='equals-div'>
+        {equalsDisplay}
+      </div>
+      
     </div>
   );
 }
